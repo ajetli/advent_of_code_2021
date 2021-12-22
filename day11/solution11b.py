@@ -29,6 +29,13 @@ class Cavern:
                 l += ' {} '.format(octopus.val_with_color())
             print(l)
 
+    def is_fully_lit(self):
+        for x in range(grid_size):
+            for y in range(grid_size):
+                if self.grid[x][y].val != 0:
+                    return False
+        return True
+
 
 def get_neighbors(octopus_coords: Tuple[int, int]) -> List[Tuple[int, int]]:
     # Return list of valid neighbors
@@ -67,15 +74,13 @@ cavern = Cavern(grid)
 cavern.print()
 
 solution = 0
-for i in range(100):
+for i in range(10000):
     # This is a list of tuples (octopus positions on grid)
     # that will flash this round
     octopuses_to_flash = []
     # Keep track of octopuses that we have visited this round
     # to avoid re-adding them to the list
     visited_octopuses = [[False] * grid_size for _ in range(grid_size)]
-    # Keep track of number of flashes this step
-    flashes_per_step = 0
     # First increment all octopus' counts by 1
     for x in range(grid_size):
         for y in range(grid_size):
@@ -88,7 +93,6 @@ for i in range(100):
     # by 1 and add a neighbor to the list of octopuses to flash if its count
     # is greater than 10
     while len(octopuses_to_flash) > 0:
-        flashes_per_step += 1
         octopus_coords = octopuses_to_flash.pop()
         for x, y in get_neighbors(octopus_coords):
             cavern.grid[x][y].val += 1
@@ -102,7 +106,10 @@ for i in range(100):
                 cavern.grid[x][y].val = 0
     print('\nCavern after step {}:'.format(i + 1))
     cavern.print()
-    print('Number of flashes: {}'.format(flashes_per_step))
-    solution += flashes_per_step
+    # Check if all octopuses are flashing at the same time, if so
+    # this is the step for your final solution
+    if cavern.is_fully_lit():
+        solution = i + 1
+        break
 
 print('\nSolution: {}'.format(solution))
