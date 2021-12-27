@@ -8,18 +8,52 @@ file = 'input_0.txt'
 
 
 class Packet:
-    type_id: int
     version: int
-    packets: List[Packet]
-    val: int
+    type_id: int
+    val: int = 0
+    sub_packets: List[Packet]
 
     def __init__(self, version, type_id):
         self.version = version
         self.type_id = type_id
 
     def get_value(self):
-        if self.type_id == 4:
+        # Addition
+        if self.type_id == 0:
+            v = 0
+            for p in self.sub_packets:
+                v += p.get_value()
+            return v
+        # Multiplication
+        if self.type_id == 1:
+            v = 1
+            for p in self.sub_packets:
+                v *= p.get_value()
+            return v
+        # Minimum
+        if self.type_id == 2:
+            v = float("inf")
+            for p in self.sub_packets:
+                v = min(v, p.get_value())
+            return v
+        # Maximum
+        if self.type_id == 3:
+            v = -1
+            for p in self.sub_packets:
+                v = max(v, p.get_value())
+            return v
+        # Literal
+        elif self.type_id == 4:
             return self.val
+        # Greater than
+        if self.type_id == 5:
+            return int(self.sub_packets[1].get_value() > self.sub_packets[0].get_value())
+        # Less than
+        if self.type_id == 6:
+            return int(self.sub_packets[1].get_value() < self.sub_packets[0].get_value())
+        # Equal
+        if self.type_id == 7:
+            return int(self.sub_packets[1].get_value() == self.sub_packets[0].get_value())
 
 
 hex_to_bin = {
@@ -53,42 +87,61 @@ with open(os.path.join(os.path.dirname(__file__), file)) as f:
 print('\nBinary string')
 print(binary)
 
+# Global variable to keep track of pointer
+i = 0
 
-def parse_binary(binary):
-    i = 0
-    packets = []
-    while i < len(binary) and int(binary[i:], 2) > 0:
-        # Parse version
-        version = int(binary[i:i+3], 2)
-        i += 3
-        # Parse type_id
-        type_id = int(binary[i:i+3], 2)
-        i += 3
-        packet = Packet(version, type_id)
-        # If type_id == 4, parse the literal
-        if type_id == 4:
-            found_last_group = False
-            literal_val = ''
-            while(not found_last_group):
-                next_five = binary[i:i+5]
-                if next_five[0] == '0':
-                    found_last_group = True
-                    literal_val += next_five[1:]
-                i += 5
-            packet.val = int(literal_val, 2)
-            packets.append(packet)
+
+def parse_packet(binary):
+    global i
+    print('Parsing binary at index: {}'.format(i))
+    # End parsing if all that's left is 0s
+    if int(binary[i:], 2) == 0:
+        return
+    # Parse version
+    version = int(binary[i:i+3], 2)
+    i += 3
+    # Parse type_id
+    type_id = int(binary[i:i+3], 2)
+    i += 3
+    # Initialize packet
+    packet = Packet(version, type_id)
+    # If type_id == 4, parse the literal
+    if type_id == 4:
+        found_last_group = False
+        literal_val = ''
+        while(not found_last_group):
+            next_five = binary[i:i+5]
+            if next_five[0] == '0':
+                found_last_group = True
+                literal_val += next_five[1:]
+            i += 5
+        packet.val = int(literal_val, 2)
+        print('Found literal: {}'.format(packet.val))
+    else:
+        # Otherwise this is an operator
+        length_id_type = int(binary[i:i+1])
+        i += 1
+        bits_to_parse = 15 if length_id_type == 0 else 11
+        length = int(binary[i:i+bits_to_parse], 2)
+        i += bits_to_parse
+        sub_packets = []
+        if length_id_type == 0:
+            # If length id type is 0, parse "length" number of characters
+            # which represents some arbitrary number of packets
+            end = i + length
+            while i < end:
+                p = parse_packet(binary)
+                print('Found subpacket: {}'.format(p.version))
+                sub_packets.append(p)
         else:
-            # Otherwise this is an operator
-            length_id_type = int(binary[i:i+1])
-            i += 1
-            bits_to_parse = 15 if length_id_type == 0 else 11
-            length = int(binary[i:i+bits_to_parse])
-            i += bits_to_parse
-            packet.packets = parse_binary(binary[i:i+length])
-            packets.append(packet)
-            i += length
-    return packets
+            # If length id type is 1, parse "length" number of packets
+            for _ in range(length):
+                p = parse_packet(binary)
+                print('Found subpacket: {}'.format(p.version))
+                sub_packets.append(p)
+        packet.sub_packets = sub_packets
+    return packet
 
 
-packets = parse_binary(binary)
-print(len(packets))
+packet = parse_packet(binary)
+print('\nSolution: {}'.format(packet.get_value()))
