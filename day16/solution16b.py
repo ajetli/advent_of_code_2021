@@ -4,18 +4,26 @@ import os
 from functools import reduce
 from typing import List
 
-file = 'input_0.txt'
+file = 'input_main.txt'
 
 
 class Packet:
     version: int
     type_id: int
     val: int = 0
-    sub_packets: List[Packet]
+    sub_packets: List[Packet] = []
 
     def __init__(self, version, type_id):
         self.version = version
         self.type_id = type_id
+
+    def __repr__(self) -> str:
+        return 'Packet({}, {}, {}, {})'.format(
+            self.version,
+            self.type_id,
+            self.val,
+            self.sub_packets,
+        )
 
     def get_value(self):
         # Addition
@@ -47,13 +55,13 @@ class Packet:
             return self.val
         # Greater than
         if self.type_id == 5:
-            return int(self.sub_packets[1].get_value() > self.sub_packets[0].get_value())
+            return int(self.sub_packets[0].get_value() > self.sub_packets[1].get_value())
         # Less than
         if self.type_id == 6:
-            return int(self.sub_packets[1].get_value() < self.sub_packets[0].get_value())
+            return int(self.sub_packets[0].get_value() < self.sub_packets[1].get_value())
         # Equal
         if self.type_id == 7:
-            return int(self.sub_packets[1].get_value() == self.sub_packets[0].get_value())
+            return int(self.sub_packets[0].get_value() == self.sub_packets[1].get_value())
 
 
 hex_to_bin = {
@@ -93,10 +101,6 @@ i = 0
 
 def parse_packet(binary):
     global i
-    print('Parsing binary at index: {}'.format(i))
-    # End parsing if all that's left is 0s
-    if int(binary[i:], 2) == 0:
-        return
     # Parse version
     version = int(binary[i:i+3], 2)
     i += 3
@@ -116,7 +120,6 @@ def parse_packet(binary):
                 literal_val += next_five[1:]
             i += 5
         packet.val = int(literal_val, 2)
-        print('Found literal: {}'.format(packet.val))
     else:
         # Otherwise this is an operator
         length_id_type = int(binary[i:i+1])
@@ -131,17 +134,16 @@ def parse_packet(binary):
             end = i + length
             while i < end:
                 p = parse_packet(binary)
-                print('Found subpacket: {}'.format(p.version))
                 sub_packets.append(p)
         else:
             # If length id type is 1, parse "length" number of packets
             for _ in range(length):
                 p = parse_packet(binary)
-                print('Found subpacket: {}'.format(p.version))
                 sub_packets.append(p)
         packet.sub_packets = sub_packets
     return packet
 
 
 packet = parse_packet(binary)
+print(packet)
 print('\nSolution: {}'.format(packet.get_value()))
