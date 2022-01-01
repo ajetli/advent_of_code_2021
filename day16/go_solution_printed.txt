@@ -1,0 +1,271 @@
+# This is a correct working solution from a sample Go solution online
+# https://github.com/travis-miller/AoC2021/blob/main/day_16/part2.go
+
+Packet(0, SUM, 0,
+	Packet(6, VALUE, 65, [])
+	Packet(1, SUM, 0,
+		Packet(1, VALUE, 50, [])
+		Packet(6, VALUE, 139, [])
+		Packet(1, VALUE, 42841944498, [])
+		Packet(7, VALUE, 1048, []))
+	Packet(7, VALUE, 103, [])
+	Packet(4, MIN, 0,
+		Packet(7, VALUE, 2790, [])
+		Packet(0, VALUE, 172, [])
+		Packet(4, VALUE, 4, [])
+		Packet(4, VALUE, 15462, [])
+		Packet(4, VALUE, 157788, []))
+	Packet(7, PRODUCT, 0,
+		Packet(0, VALUE, 3, [])
+		Packet(5, LESSTHAN, 0,
+			Packet(4, VALUE, 140054473, [])
+			Packet(2, VALUE, 5576749, [])))
+	Packet(1, PRODUCT, 0,
+		Packet(3, LESSTHAN, 0,
+			Packet(6, VALUE, 1180, [])
+			Packet(7, VALUE, 1180, []))
+		Packet(1, VALUE, 124, []))
+	Packet(5, PRODUCT, 0,
+		Packet(7, EQUAL, 0,
+			Packet(0, VALUE, 14102, [])
+			Packet(3, VALUE, 12233775, []))
+		Packet(0, VALUE, 58198, []))
+	Packet(2, PRODUCT, 0,
+		Packet(4, VALUE, 1589, [])
+		Packet(1, LESSTHAN, 0,
+			Packet(1, VALUE, 1438, [])
+			Packet(7, VALUE, 1438, [])))
+	Packet(6, PRODUCT, 0,
+		Packet(1, VALUE, 169, [])
+		Packet(5, VALUE, 64, []))
+	Packet(3, VALUE, 1371, [])
+	Packet(6, PRODUCT, 0,
+		Packet(3, GREATERTHAN, 0,
+			Packet(3, VALUE, 2533, [])
+			Packet(3, VALUE, 3840, []))
+		Packet(0, VALUE, 5576846304575, []))
+	Packet(1, SUM, 0,
+		Packet(6, VALUE, 12, [])
+		Packet(5, VALUE, 3849, [])
+		Packet(2, VALUE, 230, []))
+	Packet(4, PRODUCT, 0,
+		Packet(6, VALUE, 73, [])
+		Packet(1, VALUE, 110, [])
+		Packet(5, VALUE, 180, [])
+		Packet(6, VALUE, 204, []))
+	Packet(2, PRODUCT, 0,
+		Packet(2, LESSTHAN, 0,
+			Packet(4, VALUE, 94, [])
+			Packet(3, VALUE, 1452, []))
+		Packet(7, VALUE, 1076, []))
+	Packet(4, PRODUCT, 0,
+		Packet(3, VALUE, 137631411, [])
+		Packet(5, GREATERTHAN, 0,
+			Packet(5, VALUE, 870625, [])
+			Packet(7, VALUE, 870625, [])))
+	Packet(2, MAX, 0,
+		Packet(7, VALUE, 24251226, []))
+	Packet(3, VALUE, 122, [])
+	Packet(3, PRODUCT, 0,
+		Packet(4, VALUE, 57332, [])
+		Packet(2, LESSTHAN, 0,
+			Packet(4, VALUE, 119091, [])
+			Packet(6, VALUE, 3593, [])))
+	Packet(6, MIN, 0,
+		Packet(1, VALUE, 2825850915, [])
+		Packet(4, VALUE, 599141, [])
+		Packet(6, VALUE, 7, [])
+		Packet(4, VALUE, 640360004, []))
+	Packet(3, MAX, 0,
+		Packet(2, VALUE, 1096, [])
+		Packet(6, VALUE, 2, []))
+	Packet(7, PRODUCT, 0,
+		Packet(2, VALUE, 499152, [])
+		Packet(7, GREATERTHAN, 0,
+			Packet(2, VALUE, 11, [])
+			Packet(7, VALUE, 134, [])))
+	Packet(7, PRODUCT, 0,
+		Packet(7, GREATERTHAN, 0,
+			Packet(6, VALUE, 504754991, [])
+			Packet(6, VALUE, 504754991, []))
+		Packet(2, VALUE, 2195, []))
+	Packet(1, PRODUCT, 0,
+		Packet(1, VALUE, 215, [])
+		Packet(5, VALUE, 184, [])
+		Packet(4, VALUE, 5, [])
+		Packet(3, VALUE, 51, [])
+		Packet(0, VALUE, 49, []))
+	Packet(2, SUM, 0,
+		Packet(5, PRODUCT, 0,
+			Packet(2, VALUE, 8, [])
+			Packet(6, VALUE, 7, [])
+			Packet(4, VALUE, 3, []))
+		Packet(5, PRODUCT, 0,
+			Packet(7, VALUE, 4, [])
+			Packet(1, VALUE, 5, [])
+			Packet(1, VALUE, 3, []))
+		Packet(4, PRODUCT, 0,
+			Packet(2, VALUE, 5, [])
+			Packet(4, VALUE, 3, [])
+			Packet(0, VALUE, 4, [])))
+	Packet(7, PRODUCT, 0,
+		Packet(7, EQUAL, 0,
+			Packet(5, VALUE, 23812, [])
+			Packet(7, VALUE, 10, []))
+		Packet(4, VALUE, 796528, []))
+	Packet(4, SUM, 0,
+		Packet(2, VALUE, 3999, [])
+		Packet(5, VALUE, 67845241883, []))
+	Packet(6, PRODUCT, 0,
+		Packet(1, VALUE, 202, []))
+	Packet(2, PRODUCT, 0,
+		Packet(1, GREATERTHAN, 0,
+			Packet(6, SUM, 0,
+				Packet(3, VALUE, 5, [])
+				Packet(0, VALUE, 9, [])
+				Packet(7, VALUE, 15, []))
+			Packet(5, SUM, 0,
+				Packet(7, VALUE, 2, [])
+				Packet(7, VALUE, 10, [])
+				Packet(7, VALUE, 10, [])))
+		Packet(7, VALUE, 5, []))
+	Packet(7, PRODUCT, 0,
+		Packet(7, VALUE, 12631840172834, [])
+		Packet(3, EQUAL, 0,
+			Packet(4, VALUE, 2547, [])
+			Packet(6, VALUE, 2547, [])))
+	Packet(0, VALUE, 10962253, [])
+	Packet(3, PRODUCT, 0,
+		Packet(0, VALUE, 154, [])
+		Packet(7, LESSTHAN, 0,
+			Packet(3, SUM, 0,
+				Packet(2, VALUE, 3, [])
+				Packet(6, VALUE, 15, [])
+				Packet(3, VALUE, 7, []))
+			Packet(5, SUM, 0,
+				Packet(5, VALUE, 3, [])
+				Packet(6, VALUE, 4, [])
+				Packet(1, VALUE, 3, []))))
+	Packet(3, PRODUCT, 0,
+		Packet(1, VALUE, 184, [])
+		Packet(5, VALUE, 31, [])
+		Packet(7, VALUE, 181, []))
+	Packet(1, MAX, 0,
+		Packet(2, VALUE, 40224237123, [])
+		Packet(0, VALUE, 14693022509, [])
+		Packet(4, VALUE, 55055386571, [])
+		Packet(5, VALUE, 29421, [])
+		Packet(7, VALUE, 12707, []))
+	Packet(5, PRODUCT, 0,
+		Packet(4, VALUE, 8, [])
+		Packet(2, GREATERTHAN, 0,
+			Packet(2, VALUE, 249, [])
+			Packet(0, VALUE, 232, [])))
+	Packet(4, VALUE, 27442, [])
+	Packet(2, MAX, 0,
+		Packet(4, VALUE, 6, [])
+		Packet(1, VALUE, 48445496, [])
+		Packet(7, VALUE, 46953, [])
+		Packet(2, VALUE, 64276324385, []))
+	Packet(7, VALUE, 4196415683, [])
+	Packet(3, PRODUCT, 0,
+		Packet(1, VALUE, 27011, [])
+		Packet(3, GREATERTHAN, 0,
+			Packet(5, VALUE, 358573, [])
+			Packet(4, VALUE, 15, [])))
+	Packet(1, VALUE, 59068, [])
+	Packet(1, MIN, 0,
+		Packet(1, VALUE, 196, [])
+		Packet(5, VALUE, 2902, []))
+	Packet(4, PRODUCT, 0,
+		Packet(7, VALUE, 62136, [])
+		Packet(7, LESSTHAN, 0,
+			Packet(2, VALUE, 144969, [])
+			Packet(2, VALUE, 1090352586, [])))
+	Packet(5, PRODUCT, 0,
+		Packet(1, VALUE, 946819, [])
+		Packet(0, EQUAL, 0,
+			Packet(5, SUM, 0,
+				Packet(3, VALUE, 14, [])
+				Packet(2, VALUE, 3, [])
+				Packet(2, VALUE, 3, []))
+			Packet(2, SUM, 0,
+				Packet(6, VALUE, 7, [])
+				Packet(3, VALUE, 13, [])
+				Packet(4, VALUE, 5, []))))
+	Packet(3, PRODUCT, 0,
+		Packet(5, LESSTHAN, 0,
+			Packet(7, SUM, 0,
+				Packet(3, VALUE, 7, [])
+				Packet(1, VALUE, 2, [])
+				Packet(4, VALUE, 12, []))
+			Packet(4, SUM, 0,
+				Packet(1, VALUE, 2, [])
+				Packet(5, VALUE, 14, [])
+				Packet(4, VALUE, 6, [])))
+		Packet(5, VALUE, 3317, []))
+	Packet(5, SUM, 0,
+		Packet(0, VALUE, 1, []))
+	Packet(1, MAX, 0,
+		Packet(4, VALUE, 13, [])
+		Packet(7, VALUE, 903, [])
+		Packet(7, VALUE, 178824957, []))
+	Packet(4, MIN, 0,
+		Packet(0, VALUE, 123, [])
+		Packet(5, VALUE, 3293675040, [])
+		Packet(2, VALUE, 6060174, []))
+	Packet(0, PRODUCT, 0,
+		Packet(5, GREATERTHAN, 0,
+			Packet(1, SUM, 0,
+				Packet(5, VALUE, 5, [])
+				Packet(2, VALUE, 10, [])
+				Packet(0, VALUE, 12, []))
+			Packet(3, SUM, 0,
+				Packet(5, VALUE, 11, [])
+				Packet(7, VALUE, 3, [])
+				Packet(1, VALUE, 3, [])))
+		Packet(0, VALUE, 29, []))
+	Packet(1, MIN, 0,
+		Packet(3, VALUE, 1864, []))
+	Packet(6, VALUE, 16025808804, [])
+	Packet(2, SUM, 0,
+		Packet(5, VALUE, 112, [])
+		Packet(0, VALUE, 5365801, [])
+		Packet(0, VALUE, 19782, [])
+		Packet(0, VALUE, 14, [])
+		Packet(6, VALUE, 9, []))
+	Packet(0, VALUE, 1681, [])
+	Packet(3, PRODUCT, 0,
+		Packet(1, SUM, 0,
+			Packet(1, VALUE, 3, [])
+			Packet(4, VALUE, 11, [])
+			Packet(1, VALUE, 7, []))
+		Packet(5, SUM, 0,
+			Packet(6, VALUE, 2, [])
+			Packet(5, VALUE, 4, [])
+			Packet(5, VALUE, 14, []))
+		Packet(3, SUM, 0,
+			Packet(4, VALUE, 5, [])
+			Packet(5, VALUE, 14, [])
+			Packet(6, VALUE, 5, [])))
+	Packet(3, PRODUCT, 0,
+		Packet(6, MIN, 0,
+			Packet(1, PRODUCT, 0,
+				Packet(2, PRODUCT, 0,
+					Packet(3, MAX, 0,
+						Packet(4, MIN, 0,
+							Packet(3, PRODUCT, 0,
+								Packet(6, PRODUCT, 0,
+									Packet(7, PRODUCT, 0,
+										Packet(4, PRODUCT, 0,
+											Packet(0, MAX, 0,
+												Packet(0, PRODUCT, 0,
+													Packet(3, SUM, 0,
+														Packet(1, SUM, 0,
+															Packet(0, SUM, 0,
+																Packet(4, SUM, 0,
+																	Packet(5, SUM, 0,
+																		Packet(0, SUM, 0,
+																			Packet(4, SUM, 0,
+																				Packet(7, SUM, 0,
+																					Packet(5, VALUE, 3735, []))))))))))))))))))))))
